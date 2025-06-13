@@ -11,23 +11,32 @@ for (let i = 1; i < 6; i ++) {
 	console.log(newImage);
 	/* Append the new image element to the thumbBar div, named in STEP 1 */
 	thumbBar.append(newImage);
-	/* STEP 3c: Build event handler for each <img> */
+	/* STEP 3c: Build event handler for each <img>  using anoynmous func*/
+	//newImage.addEventListener("click", (event) => {
+		//console.log(event);
+		//let imgSrc = event.target.getAttribute("src");
+		//console.log(imgSrc);
+		//displayedImage.setAttribute("src", imgSrc);
+	//});
 }
 
 /* STEP 4: Function to change the src of the main <img> */
-
+function displayImage(value) {
 	// Rewrite the src attribute of the .displayed-img element
-
+	displayedImage.setAttribute("src", value);
+}
 
 /* STEP 5: Event Delegation
 Instead of adding event handlers for each image, how about event delegation? Build a click handler on the parent element, and capture each target (and its attributes) from the event object */
-
+thumbBar.addEventListener("click", (event) => {
 	// event.target is the element that was clicked
-
+	console.log(event.target.nodeName);
+	if (event.traget && event.target.nodeName === "IMG") {
 		// grab the src attribute of the element that was clicked
-
+		let imgSrc = event.target.getAttribute("src");
+		console.log(imgSrc);
 		// change the main image
-		
-
-
+		displayImage(imgSrc);
+	}
+});
 // This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Image_gallery and https://davidwalsh.name/event-delegate
