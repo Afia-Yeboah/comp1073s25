@@ -56,19 +56,35 @@ output.textContent = person.bio();
 /* STEP 8a: You can also set members of an object - try changing the person's name, and age */
 person.age = 80;
 /* STEP 8b: Bracket notation allows you to dynamically refer to property names. Create a function below that accepts a property name as an argument, then console.log() that property value. Try it out! */
-
+//person["age"];
 
 /* STEP 9a: It it also possible to add new members to an object. Type person.eyes = "YOUR_EYE_COLOUR_HERE" into the console - and then type person.eyes */
-
+person.eyeColor = "Green";
 
 /* STEP 9b: Add a new function called 'goodbye' to the person object and try it by typing person.goodbye into the console */
-
+person.goodbye = function (){
+    alert(`This is ${this.name.firstname} signing off!`);
+};
 
 /* STEP 10: We can also dynamically set both names and values for objects (using bracket syntax)… */
-
+let key = "hairColor";
+let value = "Black";
+person[key] = value;
 
 /* STEP 11a: 'this' is very useful - it allows us to refer to the object in question, specifically. This will become much clearer later in the course. Create two new objects, each with a name, and a function that outputs the name */
+let person1 = {
+    name: "A1",
+    describe: function() {
+        alert(`Hello ${this.name}! How are you?`)
+    }
+};
 
+let person2 = {
+    name: "A2",
+    describe: function() {
+        alert(`Hello ${this.name}! How are you?`)
+    }
+};
 
 /* STEP 11b: Call up both person1.hello() and person2.hello() in the console to see how 'this' is specific to each object */
 
