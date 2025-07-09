@@ -23,7 +23,8 @@ function Vehicle(make, model, color) {
     }
 };
 
-/* STEP 2b: Use the console to create a couple of different albums, using the 'new' keyword, and again invoking the .describe() method for each one */
+/* Instantiate new Object
+STEP 2b: Use the console to create a couple of different albums, using the 'new' keyword, and again invoking the .describe() method for each one */
 let vehicle2 = new Vehicle("Honda", "Civic", "White");
 let vehicle3 = new Vehicle("Honda", "CRV", "Black");
 
