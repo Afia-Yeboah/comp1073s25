@@ -9,7 +9,7 @@ class Coffee{
     //Next is Constructor and pass the values we need
     constructor(size, isDecaf){
         this.size = size;
-        this.isDeacf = isDecaf;
+        this.isDecaf = isDecaf;
     };
     //Next methods
     // add a serveIt method
@@ -72,7 +72,7 @@ class Latte extends Coffee{
     milkType;
     constructor(size, isDecaf, milkType){
         super(size, isDecaf);
-        this.mlikType = milkType;
+        this.milkType = milkType;
     }
     latteDesc(){
         alert (`A ${this.size} sized Latte with ${this.milkType} milk.`);
