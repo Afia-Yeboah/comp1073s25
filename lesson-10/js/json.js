@@ -1,9 +1,11 @@
 /* STEP 2: Reference the HEADER and the SECTION elements with variables */
-
+const header = document.querySelector("header");
+const section = document.querySelector("section");
 
 // STEP 3a: Create the asynchronous function populate()
-
+async function populate() {
     // Introducing JavaScript Object Notation (JSON): https://json.org/
+    // STEP 4a: Create i-scream.json file with company details*/
     // STEP 4: Store the URL of a JSON file in a variable */
     
     // STEP 5: Use the new URL to create a new request object
@@ -17,9 +19,8 @@
     // STEP 9a: Invoke the populateHeader function here, then build it below
     
     // STEP 10a: Invoke the showTopFlavors function here, then build it below
+}
     
-
-
 // STEP 3b: Call the populate() function
 
 
