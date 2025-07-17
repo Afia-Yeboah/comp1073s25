@@ -3,58 +3,95 @@ const header = document.querySelector("header");
 const section = document.querySelector("section");
 
 // STEP 3a: Create the asynchronous function populate()
-async function populate() {
+async function populate(){
     // Introducing JavaScript Object Notation (JSON): https://json.org/
-    // STEP 4a: Create i-scream.json file with company details*/
-    // STEP 4: Store the URL of a JSON file in a variable */
-    
+    // STEP 4a: Create i-scream.json file with companyName, headOffice, established, active, topFlavors(name, calories, type, ingredients, image) */
+    // STEP 4b: Store the URL of a JSON file in a variable */
+    let url = "https://priyansht.github.io/25S-JavaScript-03-Week10/js/i-scream.json";
+
     // STEP 5: Use the new URL to create a new request object
+    let request = new Request(url);
+    console.log(request);
     
     // STEP 6: Make a network request with the fetch() function, which returns a Response object
-    
+    let response = await fetch(request);
+    console.log(response);
+
     // STEP 7: Capture the returned Response object and covert to a JSON object using json()
+    let responseJson = await response.json();
     
-    // STEP 8: Output the iScream JSON object to the console 
+    // STEP 8: Output the iScream JSON object to the console
+    console.log(responseJson);
     
     // STEP 9a: Invoke the populateHeader function here, then build it below
+    populateHeader(responseJson);
     
     // STEP 10a: Invoke the showTopFlavors function here, then build it below
+    showTopFlavors(responseJson);
 }
-    
 // STEP 3b: Call the populate() function
-
+populate();
 
 /* STEP 9b: Build out the populateHeader() function */
-function populateHeader() {
+function populateHeader(jsonBody) {
     // Create the H1 element
+    let h1 = document.createElement("h1"); // <h1></h1>
+    let para = document.createElement("p"); // <p></p>
     
     // Grab the company name from the JSON object and use it for the text node
-    
+    h1.textContent = jsonBody.companyName; // <h1>I-Scream Company Inc.</h1>
+    para.textContent = `Head Office: ${jsonBody.headOffice}, est. ${jsonBody.established} - Active: ${jsonBody.active ? "Yes" : "No"}`;
+
     // Inject the complete H1 element into the DOM, inside the HEADER
-    
-};
+    header.appendChild(h1);
+    header.appendChild(para);
+}
 /* STEP 10b: Assemble the showTopFlavors() function */
-function showTopFlavors() {
-    // STEP 10c: Attache the JSON topFlavors object to a variable
-    //let topFlavors = jsonObj.topFlavors;
+function showTopFlavors(jsonBody) {
+    // STEP 10c: Attach the JSON topFlavors object to a variable
+    let topFlavors = jsonBody.topFlavors;
+
     // STEP 10d: Loop through the topFlavors object
-    for (let i = 0; i < topFlavors.length; i ++) {
-        // STEP 10e: build HTML elements for the content
-        
+    for (let i = 0; i < topFlavors.length; i++) {
+        console.log(topFlavors[i]);
+        // STEP 10e: build HTML elements for the content: article, h2, image, p1, p2, list
+        let article = document.createElement("article"); // <article></article>
+        let h2 = document.createElement("h2"); // <h2></h2>
+        let p1 = document.createElement("p"); // <p></p>
+        let p2 = document.createElement("p"); // <p></p>
+        let image = document.createElement("img"); // <img>
+        let list = document.createElement("ul"); // <ul></ul>
 
         // STEP 10f: Set the textContent property for each of the above elements (except the UL), based on the JSON content
+        h2.textContent = topFlavors[i].name;
+        p1.textContent = "Calories: " + topFlavors[i].calories;
+        p2.textContent = "Type: " + topFlavors[i].type;
+        image.setAttribute("src", topFlavors[i].image);
         
-
         // STEP 10g: Build a loop for the ingredients array in the JSON
-        
-            // add the ingredient to the UL
+        // add the ingredient to the UL
+        let ingredients = topFlavors[i].ingredients;
+        for (let j = 0; j < ingredients.length; j++) {
+            let listItem = document.createElement("li"); // <li></li>
+            listItem.textContent = ingredients[j]; // <li>Peach Syrup</li>
+            // <ul>
+            //  <li>Peach Syrup</li>
+            // </ul>
+            list.appendChild(listItem);
+        }
 
         // STEP 10h: Append each of the above HTML elements to the ARTICLE element
-        
+        article.appendChild(h2);
+        article.appendChild(p1);
+        article.appendChild(p2);
+        article.appendChild(list);
+        article.appendChild(image);
+
         // STEP 10i: Append each complete ARTICLE element to the SECTION element
-        
-    };
-};
+        section.appendChild(article);
+    }
+
+}
 // STEP 11: The instructor will edit the JSON file - refresh your page to see the updated content
 
 // STEP 12: Change the URL in STEP 3 to point to the JSON file in the local /js folder in order to prepare for today's lab
