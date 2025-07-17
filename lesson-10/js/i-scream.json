@@ -27,16 +27,28 @@
       "image" : "https://afia-yeboah.github.io/comp1073s25/lesson-10/images/peach-mango.svg"
     },
     {
-      "name" : "Strawberry Sprinkle",
+      "name" : "Cookies and Cream",
       "calories" : 280,
+      "type" : "ice cream",
+      "ingredients" : [
+        "crushed oreos",
+        "chapman cookies",
+        "chocolate chips",
+        "vanilla chunks"
+      ],
+      "image" : "https://afia-yeboah.github.io/comp1073s25/lesson-10/images/ice-cream-xtra1.svg"
+    },
+    {
+      "name" : "Rocky Road",
+      "calories" : 450,
       "type" : "Ice cream",
       "ingredients" : [
-        "Starwberry Syrup",
-        "Strawberry Chunks",
-        "Sprinkles",
+        "Chocolate chunks",
+        "Kitkat chunks",
+        "Chocolate Syrup",
         "Vanilla Base"
       ],
-      "image" : "https://afia-yeboah.github.io/comp1073s25/lesson-10/images/strawberry-sprinkle.svg"
+      "image" : "https://afia-yeboah.github.io/comp1073s25/lesson-10/images/ice-cream-xtra2.svg"
     }
   ]
 }
