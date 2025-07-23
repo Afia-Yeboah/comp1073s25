@@ -13,7 +13,7 @@ verseChoose.addEventListener("change", function () {
 function updateDisplay(choosenVerse) {
     console.log("Selected Verse from inside the function: " + choosenVerse);
     // STEP 4: Declare and initialize URL to point to text file(s)
-    let url = `https://priyansht.github.io/25S-JavaScript-03-Week11/${choosenVerse}.txt`;
+    let url = `https://afia-yeboah.github.io/comp1073s25/lesson-11/${choosenVerse}.txt`;
     console.log(url);
     // STEP 5: Build fetch() with promises
     // STEP 5a: Use fetch and pass in the URL
