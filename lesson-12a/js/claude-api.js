@@ -13,9 +13,9 @@
 
 // STEP 1: Store the API configuration
 // STEP 2: Set the base URL for the Claude API
-const baseURL = "https://georgian.polaristechservices.com/api/claude";
+const baseURL = "";
 // STEP 3: Set your student API key (student ID)
-const studentApiKey = "200582531";
+const studentApiKey = "";
 // STEP 4: Set the maximum tokens for API requests
 const maxTokens = 1000;
 
@@ -33,71 +33,28 @@ sendMessageBtn.addEventListener("click", sendChatMessage);
 checkUsageBtn.addEventListener("click", checkTokenUsage);
 
 /* STEP 7: Create the checkTokenUsage function */
-function checkTokenUsage(){
-    // STEP 7a: Create complete url
-    let url = `${baseURL}/status`;
-    console.log(url);
 
-    // STEP 7b: Request status from the API
-    fetch(url, {
-        headers: {
-            "Content-Type": "application/json",
-            "X-Student-API-Key": studentApiKey
-        }
-    }).then(res => {
-        return res.json();
-    }).then(json => {
-        // STEP 7c: Handle the response
-        displayStatus(json);
-    })
-}
+// STEP 7a: Create complete url
 
-function displayStatus(responseJson){
-    // STEP 7d: Display to user
-    console.log(responseJson);
-    let pre = document.createElement("pre"); // <pre></pre>
-    pre.textContent = `Enabled: ${responseJson.is_enabled}\nLast Used: ${responseJson.last_used_at}\nStudent Id: ${responseJson.student_id}
-    \nStudent Name: ${responseJson.student_name}\nTokens Allocated: ${responseJson.tokens_allocated}\nTokens Remaining: ${responseJson.tokens_remaining}
-    \nTokens Used: ${responseJson.tokens_used}`;
-    results.appendChild(pre);
-}
+// STEP 7b: Request status from the API
+
+// STEP 7c: Handle the response
+
+// STEP 7d: Display to user
 
 /* STEP 8: Create the sendChatMessage function for Claude API interaction */
-function sendChatMessage(){
-    // STEP 8a: Get form values
-    let message = userMessage.value;
-    // STEP 8b: Create complete url
-    let url = `${baseURL}/messages`;
-    // STEP 8c: Prepare the request body according to Claude API format
-    // STEP 8d: Make the API request using fetch()
-    fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-Student-API-Key": studentApiKey
-        },
-        body: JSON.stringify({ 
-            model: "claude-3-5-sonnet-20241022", 
-            max_tokens: maxTokens, 
-            messages: [
-                { role: "user", content: message }
-            ]
-        })
-    })// STEP 8e: Handle the response
-    .then(res => {
-        return res.json();
-    }).then(json => {
-        displayChat(json);
-    })
-}
+
+// STEP 8a: Get form values
+
+// STEP 8b: Create complete url
+
+// STEP 8c: Prepare the request body according to Claude API format
+
+// STEP 8d: Make the API request using fetch()
+
+// STEP 8e: Handle the response
 
 // STEP 8f: Extract the message content from Claude's response
-function displayChat(responseJson){
-    console.log(responseJson);
-    let para = document.createElement("p");
-    para.textContent = responseJson.content[0].text;
-    results.appendChild(para);
-}
 
 // LAB EXTENSION: Multi-Message Chat Feature
 // After completing the basic implementation, extend the functionality to support conversation history:
